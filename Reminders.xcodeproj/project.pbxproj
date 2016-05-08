@@ -7,29 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C92B60C1CDF3BA7003F8F82 /* ReminderContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92B60B1CDF3BA7003F8F82 /* ReminderContainerViewController.swift */; };
 		271824941CD64C2D00BFB779 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271824931CD64C2D00BFB779 /* MainTableViewController.swift */; };
 		271824A31CD67A8500BFB779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271824A11CD67A8500BFB779 /* Assets.xcassets */; };
 		271824A71CD67AB000BFB779 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271824A51CD67AB000BFB779 /* Reminder.swift */; };
 		271824A81CD67AB000BFB779 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271824A61CD67AB000BFB779 /* Task.swift */; };
-		271824AC1CD67ABF00BFB779 /* ModelReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271824A91CD67ABF00BFB779 /* ModelReminderViewController.swift */; };
+		271824AC1CD67ABF00BFB779 /* ModalReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271824A91CD67ABF00BFB779 /* ModalReminderViewController.swift */; };
 		271824AD1CD67ABF00BFB779 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271824AA1CD67ABF00BFB779 /* ReminderViewController.swift */; };
 		271824AE1CD67ABF00BFB779 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271824AB1CD67ABF00BFB779 /* TaskTableViewCell.swift */; };
 		271824B31CD67B3B00BFB779 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 271824AF1CD67B3B00BFB779 /* LaunchScreen.storyboard */; };
 		271824B41CD67B3B00BFB779 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 271824B11CD67B3B00BFB779 /* Main.storyboard */; };
+		27889BEE1CD9F9BC00B01279 /* AddReminderStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27889BED1CD9F9BC00B01279 /* AddReminderStorage.swift */; };
 		27BE5F691CCF97BE008EB95E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BE5F681CCF97BE008EB95E /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C92B60B1CDF3BA7003F8F82 /* ReminderContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReminderContainerViewController.swift; path = Sources/ReminderContainerViewController.swift; sourceTree = "<group>"; };
 		271824931CD64C2D00BFB779 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableViewController.swift; path = Sources/MainTableViewController.swift; sourceTree = "<group>"; };
 		271824A11CD67A8500BFB779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		271824A51CD67AB000BFB779 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = Sources/Models/Reminder.swift; sourceTree = "<group>"; };
 		271824A61CD67AB000BFB779 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Sources/Models/Task.swift; sourceTree = "<group>"; };
-		271824A91CD67ABF00BFB779 /* ModelReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelReminderViewController.swift; path = Sources/ModelReminderViewController.swift; sourceTree = "<group>"; };
+		271824A91CD67ABF00BFB779 /* ModalReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalReminderViewController.swift; path = Sources/ModalReminderViewController.swift; sourceTree = "<group>"; };
 		271824AA1CD67ABF00BFB779 /* ReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReminderViewController.swift; path = Sources/ReminderViewController.swift; sourceTree = "<group>"; };
 		271824AB1CD67ABF00BFB779 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTableViewCell.swift; path = Sources/TaskTableViewCell.swift; sourceTree = "<group>"; };
 		271824B01CD67B3B00BFB779 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		271824B21CD67B3B00BFB779 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		271824B51CD67B7900BFB779 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27889BED1CD9F9BC00B01279 /* AddReminderStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddReminderStorage.swift; path = Sources/AddReminderStorage.swift; sourceTree = "<group>"; };
 		27BE5F651CCF97BE008EB95E /* Reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27BE5F681CCF97BE008EB95E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,11 +63,13 @@
 		271824951CD64C3500BFB779 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				271824A91CD67ABF00BFB779 /* ModelReminderViewController.swift */,
+				271824A91CD67ABF00BFB779 /* ModalReminderViewController.swift */,
+				1C92B60B1CDF3BA7003F8F82 /* ReminderContainerViewController.swift */,
 				271824AA1CD67ABF00BFB779 /* ReminderViewController.swift */,
 				271824AB1CD67ABF00BFB779 /* TaskTableViewCell.swift */,
 				2718249A1CD65A9300BFB779 /* Models */,
 				271824931CD64C2D00BFB779 /* MainTableViewController.swift */,
+				27889BED1CD9F9BC00B01279 /* AddReminderStorage.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -198,7 +204,9 @@
 				271824AD1CD67ABF00BFB779 /* ReminderViewController.swift in Sources */,
 				27BE5F691CCF97BE008EB95E /* AppDelegate.swift in Sources */,
 				271824A81CD67AB000BFB779 /* Task.swift in Sources */,
-				271824AC1CD67ABF00BFB779 /* ModelReminderViewController.swift in Sources */,
+				271824AC1CD67ABF00BFB779 /* ModalReminderViewController.swift in Sources */,
+				1C92B60C1CDF3BA7003F8F82 /* ReminderContainerViewController.swift in Sources */,
+				27889BEE1CD9F9BC00B01279 /* AddReminderStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
