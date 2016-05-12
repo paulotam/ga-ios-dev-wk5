@@ -1,121 +1,164 @@
-//  Copyright © 2016 HB. All rights reserved.
-
-class ReminderViewController: UIViewController,
-  UITableViewDelegate,
-  UITableViewDataSource,
-  UITextFieldDelegate {
-
-  @IBOutlet weak var tasksTableView: UITableView!
-  @IBOutlet weak var titleTextField: UITextField!
-
-  let taskTableViewCellIdentifier = "TaskTableViewCell"
-  let addTaskTableViewCellIdentifier = "AddTaskTableViewCell"
-
-  var numberOfRows = 0
-  var reminder: Reminder?
-
-  // MARK: ViewController Lifecycle
-
-  override func viewDidAppear(animated: Bool) {
-    tasksTableView.delegate = self
-    tasksTableView.dataSource = self
-    titleTextField.delegate = self
-
-    if reminder == nil {
-      reminder = Reminder(title: "New Reminder", tasks: [])
-    }
-    
-    titleTextField!.text = reminder!.title
-
-    print("There are \(reminder!.tasks.count) Tasks in Reminders: \(reminder!.title)")
-
-    tasksTableView.reloadData()
-  }
-
-  func setReminder() {
-    print("setReminder")
-    reminder!.title = titleTextField.text
-//    tasksTableView
-
-  }
-
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
-    print("textField \(textField.text)")
-
-    setReminder()
-    textField.resignFirstResponder()
-    return true
-  }
-
-  // Mark: TableView Delegate and DataSource
-
-  func tableView(
-    tableView: UITableView,
-    numberOfRowsInSection section: Int) -> Int {
-//      return numberOfRows + 1
-      return reminder!.tasks.count + 1
-  }
-
-  func tableView(
-    tableView: UITableView,
-    cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell: UITableViewCell?
-
-    //    print("indexPath.row = \(indexPath.row) and taskList.count \(taskList.count) ")
-    if reminder!.tasks.count == indexPath.row {
-      cell = tableView.dequeueReusableCellWithIdentifier(addTaskTableViewCellIdentifier)
-    } else {
-      cell = tableView.dequeueReusableCellWithIdentifier(taskTableViewCellIdentifier)
-      if let cell = cell as? TaskTableViewCell {
-
-        cell.setButton( reminder!.tasks[indexPath.row].completed )
-        cell.descriptionField.text = reminder!.tasks[indexPath.row].description
-
-      }
-    }
-
-    //      switch indexPath.row {
-    //      case 0 where indexPath.row == 0, indexPath.row:
-    //        cell = tableView.dequeueReusableCellWithIdentifier(addTaskTableViewCellIdentifier)
-    //      default:
-    //        cell = tableView.dequeueReusableCellWithIdentifier(taskTableViewCellIdentifier)
-    //        if let cell = cell as? TaskTableViewCell {
-    //          print("indexPath.row = \(indexPath.row)")
-    //          cell.setButton( taskList[indexPath.row].completed )
-    //          cell.descriptionField.text = taskList[indexPath.row].description
-    //        }
-    //      }
-
-    return cell!
-  }
-
-  func tableView(
-    tableView: UITableView,
-    didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
-    if reminder!.tasks.count == indexPath.row {
-      reminder!.tasks.append(Task(completed: false, description: ""))
-      tableView.reloadData()
-    } else {
-
-    }
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-  }
-
-  func setReminder(reminder: Reminder?) {
-    guard reminder != nil else { return }
-
-    self.reminder = reminder
-    tasksTableView.reloadData()
-  }
-
-//  func update(indexPath: NSIndexPath, reminder: Reminder?) {
-//    guard task != nil else { return }
 //
-//    reminder!.tasks[indexPath.row] = task!
-//    tasksTableView.reloadData()
-//  }
-
-}
+//  ReminderViewController.swift
+//  Reminders
+//
+//  Created by Anton Wintergerst on 11/05/2016.
+//  Copyright © 2016 Anton Wintergerst. All rights reserved.
+//
 
 import UIKit
+
+// MARK: - ReminderDelegate Protocol Definition
+protocol ReminderDelegate {
+    func shouldAddReminder(reminder: Reminder)
+    func shouldEditReminder(reminder: Reminder, indexPath: NSIndexPath?)
+}
+
+// MARK: - Reminder detail screen ViewController
+class ReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskTableViewDelegate {
+    
+    // MARK: IB Connections
+    @IBOutlet weak var tasksTableView: UITableView!
+    @IBOutlet weak var titleTextField: UITextField!
+    
+    // MARK: Constants
+    let taskTableViewCellIdentifier = "TaskTableViewCell"
+    let addTaskTableViewCellIdentifier = "AddTaskTableViewCell"
+    
+    // MARK: Variables
+    var delegate: ReminderDelegate?
+    var reminder = Reminder()
+    var reminderIndexPath:NSIndexPath?
+    var editingTaskTextfield:UITextField?
+    var editingTaskIndexPath:NSIndexPath?
+    
+    // MARK: UIViewController functions
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        titleTextField.text = reminder.title
+        
+        // Set delegate and dataSource variables for tasksTableView
+        tasksTableView.delegate = self
+        tasksTableView.dataSource = self
+        
+        // Update tasksTableView data
+        tasksTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // TODO: Store last edited task
+        saveLastEditedTask()
+        
+        // TODO: Store reminder title
+        reminder.title = titleTextField.text
+        
+        // TODO: Use delegate function to edit reminder if it already exists or add a new one if it doesn't exist
+      if reminderIndexPath == nil {
+        delegate?.shouldAddReminder(reminder)
+      } else {
+        delegate?.shouldEditReminder(reminder, indexPath: reminderIndexPath)
+      }
+      
+    }
+    
+    func saveLastEditedTask() {
+        if let indexPath = editingTaskIndexPath {
+            var task = reminder.tasks[indexPath.row]
+            task.description = editingTaskTextfield?.text
+            reminder.tasks[indexPath.row] = task
+        }
+    }
+
+    // MARK: TaskTableViewDelegate
+    func didBeginEditingTask(cell: UITableViewCell, textField: UITextField) {
+        print("didBeginEditingTask was called.")
+        if let indexPath = tasksTableView.indexPathForCell(cell) {
+            // TODO: Save reminder task textfield and indexPath for use later
+            editingTaskTextfield = textField
+            reminderIndexPath = indexPath
+        }
+    }
+    
+    func didUpdateTask(cell: UITableViewCell, completed: Bool, description: String?) {
+        print("didUpdateTask was called and completed = \(completed) ")
+        if let indexPath = tasksTableView.indexPathForCell(cell) {
+            if reminder.tasks.count > indexPath.row {
+              // TODO: Update reminder task at indexPath
+              print("PATH? \(reminderIndexPath!.row)")
+              reminder.tasks[reminderIndexPath!.row].description = description!
+              reminder.tasks[reminderIndexPath!.row].completed = completed
+              if reminderIndexPath == nil {
+                delegate?.shouldAddReminder(reminder)
+              } else {
+                delegate?.shouldEditReminder(reminder, indexPath: reminderIndexPath)
+              }
+            }
+        }
+    }
+    
+    // MARK: UITableViewDataSource
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // + 1 for add reminder task cell
+        return reminder.tasks.count + 1
+    }
+    
+    // MARK: UITableViewDelegate
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: UITableViewCell?
+        
+        switch indexPath.row {
+        case reminder.tasks.count:
+            cell = tableView.dequeueReusableCellWithIdentifier(addTaskTableViewCellIdentifier)
+        default:
+            cell = tableView.dequeueReusableCellWithIdentifier(taskTableViewCellIdentifier)
+            if let cell = cell as? TaskTableViewCell {
+                // TODO: Set cell delegate variable
+                cell.delegate = self
+                
+                if reminder.tasks.count > indexPath.row {
+                    // TODO: Set cell completed state and description
+                    cell.completed = reminder.tasks[indexPath.row].completed
+                    cell.textField.text = reminder.tasks[indexPath.row].description
+                  
+                    cell.updateRadioButton()
+                }
+            }
+        }
+        
+        if let cell = cell {
+            return cell
+        } else {
+            print("Warning: TableView contains default cell type")
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case reminder.tasks.count:
+            // TODO: Store last edited task
+            saveLastEditedTask()
+            
+            // Add new task
+            reminder.tasks.append(Task())
+            
+            // Update tasksTableView data
+            tableView.reloadData()
+        default:
+            break
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            // TODO: Remove reminder task using indexPath.row
+          
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+}
