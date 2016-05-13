@@ -87,6 +87,14 @@ class ReminderViewController: UIViewController,
 //    print("didBeginEditingTask was called.")
     if let indexPath = tasksTableView.indexPathForCell(cell) {
       // Save reminder task textfield and indexPath for use later
+
+      // This one removes the bug where you add two tasks then type in first
+      // then type in second without a RETURN of first bug.
+      if editingTaskTextfield != textField {
+        saveLastEditedTask()
+      }
+      
+      //Store the current text field and indexPath for call back to save it if no RETURN.
       editingTaskTextfield = textField
       editingTaskIndexPath = indexPath
 //      print("ROW is: \(editingTaskIndexPath!.row) ")

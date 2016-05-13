@@ -1,5 +1,20 @@
 # Reminders Assigment
 
+## Updated by Paulo Tam.
+
+I am able capture user inputs in th screens and initialize their values.
+I am able to pass this back to the main screen.
+I am able to pass it back to the reminder screen.
+And I can delete reminders and Tasks in a reminder.
+
+Things that I note:
+
+When update of a task in an existing screen, I pass the reminder back immediately.
+When i am in the add, i only pass it when its complete, I think this causes an issue.
+There was a bug where you add two tasks to a new reminder, and then type in first and
+type in second it wouldn't save, so i added a force save on begin that if its different
+to save it.'
+
 ## Goals
 
 1. Understand how to save user data between screens.
