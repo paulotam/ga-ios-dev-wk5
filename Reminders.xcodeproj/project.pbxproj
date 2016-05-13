@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CAADADC1CE61B5300B06D92 /* reminder-58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CAADADB1CE61B5300B06D92 /* reminder-58x58.png */; };
 		29D52B4B1CE31C1100642EE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D52B4A1CE31C1100642EE4 /* AppDelegate.swift */; };
 		29D52B501CE31C1100642EE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29D52B4E1CE31C1100642EE4 /* Main.storyboard */; };
 		29D52B521CE31C1100642EE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29D52B511CE31C1100642EE4 /* Assets.xcassets */; };
@@ -22,7 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1CAADADB1CE61B5300B06D92 /* reminder-58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reminder-58x58.png"; sourceTree = "<group>"; };
 		29D52B471CE31C1100642EE4 /* Reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29D52B4A1CE31C1100642EE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29D52B4F1CE31C1100642EE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				29D52B511CE31C1100642EE4 /* Assets.xcassets */,
-				1CAADADB1CE61B5300B06D92 /* reminder-58x58.png */,
 				29D52B561CE31C1100642EE4 /* Info.plist */,
 				29D52B4E1CE31C1100642EE4 /* Main.storyboard */,
 				29D52B531CE31C1100642EE4 /* LaunchScreen.storyboard */,
@@ -178,7 +175,6 @@
 			files = (
 				29D52B551CE31C1100642EE4 /* LaunchScreen.storyboard in Resources */,
 				29D52B521CE31C1100642EE4 /* Assets.xcassets in Resources */,
-				1CAADADC1CE61B5300B06D92 /* reminder-58x58.png in Resources */,
 				29D52B501CE31C1100642EE4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
