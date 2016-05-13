@@ -93,7 +93,7 @@ class ReminderViewController: UIViewController,
       if editingTaskTextfield != textField {
         saveLastEditedTask()
       }
-      
+
       //Store the current text field and indexPath for call back to save it if no RETURN.
       editingTaskTextfield = textField
       editingTaskIndexPath = indexPath
