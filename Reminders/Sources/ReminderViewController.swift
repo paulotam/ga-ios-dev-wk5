@@ -40,11 +40,11 @@ class ReminderViewController: UIViewController,
 
     super.viewWillAppear(animated)
 
-    if let reminderIndexPath = reminderIndexPath {
+/*    if let reminderIndexPath = reminderIndexPath {
       print("ReminderViewController::reminderIndexPath = \(reminderIndexPath.row)")
     } else {
       print("ReminderViewController::reminderIndexPath = NO INDEX PATH")
-    }
+    }*/
 
     titleTextField.text = reminder.title
 
@@ -84,22 +84,22 @@ class ReminderViewController: UIViewController,
 
   // MARK: TaskTableViewDelegate
   func didBeginEditingTask(cell: UITableViewCell, textField: UITextField) {
-    print("didBeginEditingTask was called.")
+//    print("didBeginEditingTask was called.")
     if let indexPath = tasksTableView.indexPathForCell(cell) {
       // Save reminder task textfield and indexPath for use later
       editingTaskTextfield = textField
       editingTaskIndexPath = indexPath
-      print("ROW is: \(editingTaskIndexPath!.row) ")
+//      print("ROW is: \(editingTaskIndexPath!.row) ")
     }
   }
 
   func didUpdateTask(cell: UITableViewCell, completed: Bool, description: String?) {
-    print("didUpdateTask was called and completed = \(completed) with \(description) ")
+//    print("didUpdateTask was called and completed = \(completed) with \(description) ")
     if let indexPath = tasksTableView.indexPathForCell(cell) {
       if reminder.tasks.count > indexPath.row {
         // Update reminder task at indexPath
-        print("ReminderViewController::didUpdateTask Task:"
-          + "\(indexPath.row) with \(description) and \(completed)")
+//        print("ReminderViewController::didUpdateTask Task:"
+//          + "\(indexPath.row) with \(description) and \(completed)")
         reminder.tasks[indexPath.row].description = description!
         reminder.tasks[indexPath.row].completed = completed
 
@@ -144,7 +144,7 @@ class ReminderViewController: UIViewController,
     if let cell = cell {
       return cell
     } else {
-      print("Warning: TableView contains default cell type")
+//      print("Warning: TableView contains default cell type")
       return UITableViewCell()
     }
   }

@@ -16,7 +16,7 @@ class AddReminderViewController: UIViewController {
 
     // MARK: IB Connections
     @IBAction func addButtonPressed(sender: AnyObject) {
-        print("addButtonerPressed.")
+//        print("addButtonerPressed.")
         dismissViewControllerAnimated(true, completion: nil)
     }
 

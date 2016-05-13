@@ -20,7 +20,7 @@ class EditReminderViewController: UIViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
 
-    print("EditReminderViewController::reminderIndexPath = \(reminderIndexPath!.row)")
+//    print("EditReminderViewController::reminderIndexPath = \(reminderIndexPath!.row)")
 
     if let viewController = segue.destinationViewController as? ReminderViewController {
 

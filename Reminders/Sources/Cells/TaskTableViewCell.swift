@@ -52,7 +52,7 @@ class TaskTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     // MARK: UITextFieldDelegate
     func textFieldDidBeginEditing(textField: UITextField) {
-        print("TaskTableViewCell::textFieldDidBeginEditing was called")
+//        print("TaskTableViewCell::textFieldDidBeginEditing was called")
 
         // Use delegate function to signal task textField is being edited
         delegate?.didBeginEditingTask(self, textField: textField)
@@ -61,8 +61,8 @@ class TaskTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-      print("TaskTableViewCell::textFieldShouldReturn was "
-        + "called with \(completed) and \(textField.text) ")
+//      print("TaskTableViewCell::textFieldShouldReturn was "
+//        + "called with \(completed) and \(textField.text) ")
 
         // Use delegate function to update task
         delegate?.didUpdateTask(

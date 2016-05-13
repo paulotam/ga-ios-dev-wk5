@@ -62,14 +62,14 @@ class MainTableViewController: UITableViewController, ReminderDelegate {
   // MARK: - AddReminderDelegate
   func shouldAddReminder(reminder: Reminder) {
     // Add new reminder
-    print("MainTableViewController::shouldAddReminder was called.")
+//    print("MainTableViewController::shouldAddReminder was called.")
     reminders.append(reminder)
   }
 
   // MARK: - EditReminderDelegate
   func shouldEditReminder(reminder: Reminder, indexPath: NSIndexPath?) {
     // Edit existing reminder
-    print("shouldEditReminder at \(indexPath!.row)")
+//    print("shouldEditReminder at \(indexPath!.row)")
     reminders[indexPath!.row] = reminder
   }
 
@@ -107,7 +107,7 @@ class MainTableViewController: UITableViewController, ReminderDelegate {
     if let cell = cell {
       return cell
     } else {
-      print("Warning: TableView contains default cell type")
+//      print("Warning: TableView contains default cell type")
       return UITableViewCell()
     }
   }
