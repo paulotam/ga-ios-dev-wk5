@@ -13,19 +13,19 @@ class AddReminderViewController: UIViewController {
 
     // MARK: Variables
     var delegate: ReminderDelegate?
-    
+
     // MARK: IB Connections
     @IBAction func addButtonPressed(sender: AnyObject) {
         print("addButtonerPressed.")
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     // MARK: UIViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        
+
         if let viewController = segue.destinationViewController as? ReminderViewController {
-            // TODO: Pass delegate to ReminderViewController
+            // Pass delegate to ReminderViewController
             viewController.reminderIndexPath = nil
             viewController.delegate = delegate
 

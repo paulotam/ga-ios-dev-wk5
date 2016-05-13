@@ -10,22 +10,25 @@ import UIKit
 
 // MARK: - Edit reminder container screen for ReminderViewController
 class EditReminderViewController: UIViewController {
-    
-    // MARK: Variables
-    var delegate:ReminderDelegate?
-    var reminder:Reminder?
-    var reminderIndexPath:NSIndexPath?
-    
-    // MARK: UIViewController functions
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        
-        if let viewController = segue.destinationViewController as? ReminderViewController {
-            // TODO: Pass reminder, reminderIndexPath and delegate to ReminderViewController
-            viewController.reminder = reminder!
-            viewController.reminderIndexPath = reminderIndexPath
-            viewController.delegate = delegate
-          
-        }
+
+  // MARK: Variables
+  var delegate: ReminderDelegate?
+  var reminder: Reminder?
+  var reminderIndexPath: NSIndexPath?
+
+  // MARK: UIViewController functions
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    super.prepareForSegue(segue, sender: sender)
+
+    print("EditReminderViewController::reminderIndexPath = \(reminderIndexPath!.row)")
+
+    if let viewController = segue.destinationViewController as? ReminderViewController {
+
+      // Pass reminder, reminderIndexPath and delegate to ReminderViewController
+      viewController.reminder = reminder!
+      viewController.reminderIndexPath = reminderIndexPath
+      viewController.delegate = delegate
+
     }
+  }
 }

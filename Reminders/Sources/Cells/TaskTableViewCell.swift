@@ -16,54 +16,61 @@ protocol TaskTableViewDelegate {
 
 // MARK: - Table view cell prototype for task cells
 class TaskTableViewCell: UITableViewCell, UITextFieldDelegate {
-    
+
     // MARK: Variables
     var delegate: TaskTableViewDelegate?
     var completed = false
-    
+
     // MARK: IB Connections
     @IBOutlet weak var radioButton: UIButton!
     @IBOutlet weak var textField: UITextField!
-    
+
     @IBAction func radioButtonPressed(sender: AnyObject) {
         if let _ = sender as? UIButton {
             completed = !completed
             updateRadioButton()
-            
-            // TODO: Use delegate function to update task
+
+            // Use delegate function to update task
             delegate?.didUpdateTask(self, completed: completed, description: textField.text)
 
         }
     }
-  
+
     func updateRadioButton() {
-        radioButton.setImage(UIImage(named: completed ? "radio-on" : "radio-off"), forState: .Normal)
+        radioButton.setImage(
+          UIImage(named: completed ? "radio-on" : "radio-off"),
+          forState: .Normal)
     }
-    
+
     // MARK: UITableViewCell functions
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        // TODO: Set delegate variable for textField
+
+        // Set delegate variable for textField
         textField.delegate = self
     }
-    
+
     // MARK: UITextFieldDelegate
     func textFieldDidBeginEditing(textField: UITextField) {
         print("TaskTableViewCell::textFieldDidBeginEditing was called")
-  
-        // TODO: Use delegate function to signal task textField is being edited
+
+        // Use delegate function to signal task textField is being edited
         delegate?.didBeginEditingTask(self, textField: textField)
-      
+
     }
-    
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        print("TaskTableViewCell::textFieldShouldReturn was called")
-      
-        // TODO: Use delegate function to update task
-        delegate?.didUpdateTask(self, completed: completed, description: textField.text)
+      print("TaskTableViewCell::textFieldShouldReturn was "
+        + "called with \(completed) and \(textField.text) ")
+
+        // Use delegate function to update task
+        delegate?.didUpdateTask(
+          self,
+          completed: completed,
+          description: textField.text)
 
         return true
     }
+
 }
