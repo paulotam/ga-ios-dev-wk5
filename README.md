@@ -13,7 +13,7 @@ When update of a task in an existing screen, I pass the reminder back immediatel
 When i am in the add, i only pass it when its complete, I think this causes an issue.
 There was a bug where you add two tasks to a new reminder, and then type in first and
 type in second it wouldn't save, so i added a force save on begin that if its different
-to save it.'
+to save it.
 
 ## Goals
 
