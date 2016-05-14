@@ -70,7 +70,9 @@ class MainTableViewController: UITableViewController, ReminderDelegate {
   func shouldEditReminder(reminder: Reminder, indexPath: NSIndexPath?) {
     // Edit existing reminder
 //    print("shouldEditReminder at \(indexPath!.row)")
-    reminders[indexPath!.row] = reminder
+    if let indexPath = indexPath {
+      reminders[indexPath.row] = reminder
+    }
   }
 
   // MARK: - UITableViewDataSource

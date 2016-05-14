@@ -26,9 +26,7 @@ class AddReminderViewController: UIViewController {
 
         if let viewController = segue.destinationViewController as? ReminderViewController {
             // Pass delegate to ReminderViewController
-            viewController.reminderIndexPath = nil
             viewController.delegate = delegate
-
         }
     }
 }

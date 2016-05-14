@@ -142,8 +142,9 @@ class ReminderViewController: UIViewController,
 
           if reminder.tasks.count > indexPath.row {
             // Set cell completed state and description
-            cell.completed = reminder.tasks[indexPath.row].completed
-            cell.textField.text = reminder.tasks[indexPath.row].description
+            let task = reminder.tasks[indexPath.row]
+            cell.completed = task.completed
+            cell.textField.text = task.description
             cell.updateRadioButton()
           }
         }
