@@ -11,7 +11,7 @@ import UIKit
 // MARK: - ReminderDelegate Protocol Definition
 protocol ReminderDelegate {
     func shouldAddReminder(reminder: Reminder)
-    func shouldEditReminder(reminder: Reminder, indexPath: NSIndexPath?)
+    func shouldEditReminder(reminder: Reminder, indexPath: NSIndexPath)
 }
 
 // MARK: - Reminder detail screen ViewController
@@ -67,10 +67,10 @@ class ReminderViewController: UIViewController,
 
     // Use delegate function to edit reminder
     // if it already exists or add a new one if it doesn't exist
-    if reminderIndexPath == nil {
-      delegate?.shouldAddReminder(reminder)
-    } else {
+    if let reminderIndexPath = reminderIndexPath {
       delegate?.shouldEditReminder(reminder, indexPath: reminderIndexPath)
+    } else {
+      delegate?.shouldAddReminder(reminder)
     }
   }
 
@@ -112,7 +112,7 @@ class ReminderViewController: UIViewController,
         reminder.tasks[indexPath.row].completed = completed
 
         if reminderIndexPath != nil {
-          delegate?.shouldEditReminder(reminder, indexPath: reminderIndexPath)
+          delegate?.shouldEditReminder(reminder, indexPath: reminderIndexPath!)
         }
       }
     }
